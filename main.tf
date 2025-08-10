@@ -18,7 +18,6 @@ resource "aws_s3_bucket_website_configuration" "website" {
   }
 }
 
-# IAM policy for S3 public access
 resource "aws_s3_bucket_policy" "make_public" {
   depends_on = [aws_s3_bucket_public_access_block.public_access]
   
@@ -43,7 +42,6 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
   restrict_public_buckets = false
 }
 
-# S3 bucket versioning for better practices
 resource "aws_s3_bucket_versioning" "website_versioning" {
   bucket = aws_s3_bucket.my_website.id
   versioning_configuration {
@@ -51,7 +49,6 @@ resource "aws_s3_bucket_versioning" "website_versioning" {
   }
 }
 
-# S3 bucket logging for monitoring
 resource "aws_s3_bucket" "access_logs" {
   bucket = "neequu-iu-cloud-programming-access-logs"
 }
@@ -63,7 +60,6 @@ resource "aws_s3_bucket_logging" "website_logging" {
   target_prefix = "access-logs/"
 }
 
-# Block public access to logs bucket
 resource "aws_s3_bucket_public_access_block" "logs_private" {
   bucket = aws_s3_bucket.access_logs.id
 
@@ -89,7 +85,6 @@ resource "aws_s3_object" "error_html" {
   etag         = filemd5("error.html")
 }
 
-# Outputs
 output "website_url" {
   value = aws_s3_bucket_website_configuration.website.website_endpoint
   description = "S3 static website URL"
