@@ -1,13 +1,13 @@
 # AWS STATIC WEBSITE DEPLOYMENT
 ```bash
 /
+├── error.html       # error page
+├── index.html       # main page
 ├── main.tf          # main terraform config
 ├── outputs.tf       # outputs config
-├── variables.tf     # variable def
 ├── terraform.tfvars # variable values
-├── index.html       # main page
-└── error.html       # error page
-```
+└── variables.tf     # variable def
+```****
 ```bash
 # DEPLOYMENT COMMANDS
 $ terraform init     # initialize terraform
