@@ -7,7 +7,7 @@
 ├── outputs.tf       # outputs config
 ├── terraform.tfvars # variable values
 └── variables.tf     # variable def
-```****
+```
 ```bash
 # DEPLOYMENT COMMANDS
 $ terraform init     # initialize terraform
