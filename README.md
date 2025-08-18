@@ -1,4 +1,5 @@
 # AWS STATIC WEBSITE DEPLOYMENT
+## Folder structure
 ```bash
 /
 ├── error.html       # error page
@@ -8,18 +9,29 @@
 ├── terraform.tfvars # variable values
 └── variables.tf     # variable def
 ```
+## Before starting
+
+Create aws_credentials file with:
+
+```bash
+[default]
+aws_access_key_id = YOUR_ACCESS_KEY
+aws_secret_access_key = YOUR_SECRET_KEY
+```
+
+## Working with terraform
+
 ```bash
 # DEPLOYMENT COMMANDS
 $ terraform init     # initialize terraform
 $ terraform plan     # check what will be created
 $ terraform apply    # deploy
-
 ```
-# CLEAN UP
+## CLEAN UP
 ```bash
 $ terraform destroy  # remove all resources
 ```
-# Architectural note
+## Architectural note
 Current version does not use CloudFront CDN by default due to in-progress AWS request for account limitation removal. 
 For running the code with the CloudFront CDN and other full features there are 2 options:
   1. Run `terraform apply -var="enable_cloudfront=true"`
